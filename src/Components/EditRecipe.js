@@ -22,7 +22,7 @@ const EditRecipe = () => {
   const { setAdmin, setProfilePic } = useUserContext();
   useEffect(() => {
     axios
-      .get(`http://localhost:5000/api/v1/recipe/${id}`)
+      .get(`https://sore-cyan-hedgehog-slip.cyclic.cloud/api/v1/recipe/${id}`)
       .then((response) => {
         setRecipe(response.data.data);
       })
@@ -48,7 +48,7 @@ const EditRecipe = () => {
     } else {
       try {
         const response = await axios.put(
-          `http://localhost:5000/api/v1/recipe/${id}`,
+          `https://sore-cyan-hedgehog-slip.cyclic.cloud/api/v1/recipe/${id}`,
           {
             mealName: mealName === "" ? recipe.mealName : mealName,
             instruction: instruction === "" ? recipe.instruction : instruction,
