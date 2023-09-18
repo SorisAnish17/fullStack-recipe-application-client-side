@@ -96,7 +96,7 @@ const Header = ({ name, ...props }) => {
   const updatePost = async () => {
     try {
       const response = await axios.put(
-        `http://localhost:5000/api/v1/user/${userId}`,
+        `https://sore-cyan-hedgehog-slip.cyclic.cloud/api/v1/user/${userId}`,
         {
           firstName: firstName,
           lastName: lastName,
@@ -149,7 +149,7 @@ const Header = ({ name, ...props }) => {
     try {
       if (window.confirm("Are You Want to Delete Your Account?")) {
         axios
-          .delete(`http://localhost:5000/api/v1/user/${userDetail._id}`)
+          .delete(`https://sore-cyan-hedgehog-slip.cyclic.cloud/api/v1/user/${userDetail._id}`)
           .then((reponse) => {
             alert("User Deleted Successfully");
             window.location.reload();
