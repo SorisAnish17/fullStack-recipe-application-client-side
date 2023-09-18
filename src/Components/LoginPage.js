@@ -13,7 +13,7 @@ const LoginPage = () => {
   const { userId, setUserId } = useUserContext();
   useEffect(() => {
     axios
-      .get("http://localhost:5000/api/v1/user/allUser")
+      .get("https://sore-cyan-hedgehog-slip.cyclic.cloud/api/v1/user/allUser")
       .then((response) => setUsers(response.data.data))
       .catch((error) => console.log(error));
   }, []);
