@@ -23,7 +23,7 @@ const Recipes = () => {
     setLoading(true);
     const timeoutId = setTimeout(() => {
       axios
-        .get(`http://localhost:5000/api/v1/recipe/allRecipe`)
+        .get(`https://sore-cyan-hedgehog-slip.cyclic.cloud/api/v1/recipe/allRecipe`)
         .then((response) => {
           const filteredRecipes = response.data.data.filter((recipe) =>
             recipe.mealName.toLowerCase().includes(searchQuery.toLowerCase())
@@ -39,7 +39,7 @@ const Recipes = () => {
     }, 500);
 
     axios
-      .get(`http://localhost:5000/api/v1/user/${Id}`)
+      .get(`https://sore-cyan-hedgehog-slip.cyclic.cloud/api/v1/user/${Id}`)
       .then((response) => {
         if (response.data.data) {
           setUserDetail(response.data.data);
