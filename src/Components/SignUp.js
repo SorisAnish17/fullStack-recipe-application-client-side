@@ -72,7 +72,7 @@ const SignUp = () => {
   const postMethod = async () => {
     try {
       axios
-        .post("http://localhost:5000/api/v1/user/create", {
+        .post("https://sore-cyan-hedgehog-slip.cyclic.cloud/api/v1/user/create", {
           firstName,
           lastName,
           email,
