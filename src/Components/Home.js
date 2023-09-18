@@ -18,7 +18,7 @@ const Home = () => {
 
   useEffect(() => {
     axios
-      .get(`http://localhost:5000/api/v1/user/${id}`)
+      .get(`https://sore-cyan-hedgehog-slip.cyclic.cloud/api/v1/user/${id}`)
       .then((response) => {
         if (response.data.data) {
           setUserDetail(response.data.data);
