@@ -78,9 +78,6 @@ const Header = ({ name, ...props }) => {
   };
 
   const handleAdmin = () => {
-    setProfilePic(
-      "https://png.pngtree.com/png-clipart/20190629/original/pngtree-vector-administration-icon-png-image_4090499.jpg"
-    );
     setUserDetail("");
     setAdmin((prevAdmin) => {
       console.log(!prevAdmin); // Log the updated value
@@ -193,192 +190,218 @@ const Header = ({ name, ...props }) => {
           <FaGlassMartiniAlt />
         </h5>
       </div>
-      <div style={{ display: "flex", gap: "20px" }}>
-        <button style={{ backgroundColor: "orange", borderRadius: "12px" }}>
-          <p className="m-0" onClick={handleLogOut}>
-            logOut
+      {userId !== "" ? (
+        <div style={{ display: "flex", gap: "20px" }}>
+          <button style={{ backgroundColor: "orange", borderRadius: "12px" }}>
+            <p className="m-0" onClick={handleLogOut}>
+              logOut
+            </p>
+          </button>
+          <p className="m-0">
+            <img
+              src={profilePic}
+              // alt="profile"
+              width={"35px"}
+              height={"30px"}
+              style={{ borderRadius: "12px", cursor: "pointer" }}
+              onClick={handleShow}
+            />
           </p>
-        </button>
-        <p className="m-0">
-          <img
-            src={profilePic}
-            // alt="profile"
-            width={"35px"}
-            height={"30px"}
-            style={{ borderRadius: "12px", cursor: "pointer" }}
-            onClick={handleShow}
-          />
-        </p>
-
-        <Offcanvas
-          show={show}
-          onHide={handleClose}
-          {...props}
-          style={{ backgroundColor: "white" }}
-        >
-          <Offcanvas.Header closeButton>
-            <Offcanvas.Title className="text-danger">Profile</Offcanvas.Title>
-          </Offcanvas.Header>
-          <Offcanvas.Body>
-            <div
-              style={{
-                backgroundColor: "#E1F2F7",
-                padding: "15px",
-                borderRadius: "15px",
-              }}
-            >
-              <Form noValidate validated={validated}>
-                <Row className="mb-3">
-                  <Form.Group as={Col} md="12" controlId="validationCustom01">
-                    <Form.Label>First Name</Form.Label>
-                    <Form.Control
-                      required
-                      className="form-field"
-                      type="text"
-                      placeholder="FirstName"
-                      value={firstName}
-                      readOnly={lockInputs}
-                      onChange={(e) => setFirstName(e.target.value)}
-                    />
-                    <Form.Control.Feedback type="invalid">
-                      Please Enter First Name
-                    </Form.Control.Feedback>
-                  </Form.Group>
-                </Row>
-                <Row>
-                  <Form.Group as={Col} md="12" controlId="validationCustom02">
-                    <Form.Label>Second Name</Form.Label>
-                    <Form.Control
-                      required
-                      type="text"
-                      className="form-field"
-                      placeholder="SecondName"
-                      value={lastName}
-                      readOnly={lockInputs}
-                      onChange={(e) => setLastName(e.target.value)}
-                    />
-                    <Form.Control.Feedback type="invalid">
-                      Please Enter Second Name
-                    </Form.Control.Feedback>
-                  </Form.Group>
-                </Row>
-                <Row>
-                  {" "}
-                  <Form.Group as={Col} md="12" controlId="validationCustom03">
-                    <Form.Label>Email</Form.Label>
-                    <Form.Control
-                      required
-                      type="email"
-                      className="form-field"
-                      placeholder="Email"
-                      value={email}
-                      readOnly={lockInputs}
-                      onChange={(e) => setEmail(e.target.value)}
-                    />
-                    <Form.Control.Feedback type="invalid">
-                      Please Enter Your Email
-                    </Form.Control.Feedback>
-                  </Form.Group>
-                </Row>
-                <Row>
-                  <Form.Group as={Col} md="12" controlId="validationCustom04">
-                    <Form.Label>Password</Form.Label>
-                    <Form.Control
-                      required
-                      type="password"
-                      className="form-field"
-                      placeholder="password"
-                      value={password}
-                      readOnly={lockInputs}
-                      onChange={(e) => setPassword(e.target.value)}
-                    />
-                    <Form.Control.Feedback type="invalid">
-                      Please Enter Password
-                    </Form.Control.Feedback>
-                  </Form.Group>
-                </Row>
-                <Row>
-                  <Form.Group as={Col} md="12" controlId="validationCustom05">
-                    <Form.Label>Mobile-Number</Form.Label>
-                    <Form.Control
-                      required
-                      type="number" // Make sure it's set to "number"
-                      className="form-field"
-                      placeholder="Mobile-Number"
-                      value={mobileNumber}
-                      readOnly={lockInputs}
-                      onChange={(e) => setMobileNumber(e.target.value)}
-                    />
-                    <Form.Control.Feedback type="invalid">
-                      Please Enter Mobile-Number
-                    </Form.Control.Feedback>
-                  </Form.Group>
-                </Row>
-                <Row>
-                  {" "}
-                  <Form.Group as={Col} md="12" controlId="validationCustom06">
-                    <Form.Label className="pt-3">
-                      Upload Your Profile Picture
-                    </Form.Label>
-                    <div className="d-flex m-2">
-                      <p>Current Profile</p>
-                      <img
-                        src={userDetail?.profilePicture}
-                        width={"40px"}
-                        height={"35px"}
+          <Offcanvas
+            show={show}
+            onHide={handleClose}
+            {...props}
+            style={{ backgroundColor: "white" }}
+          >
+            <Offcanvas.Header closeButton>
+              <Offcanvas.Title className="text-danger">Profile</Offcanvas.Title>
+            </Offcanvas.Header>
+            <Offcanvas.Body>
+              <div
+                style={{
+                  backgroundColor: "#E1F2F7",
+                  padding: "15px",
+                  borderRadius: "15px",
+                }}
+              >
+                <Form noValidate validated={validated}>
+                  <Row className="mb-3">
+                    <Form.Group as={Col} md="12" controlId="validationCustom01">
+                      <Form.Label>First Name</Form.Label>
+                      <Form.Control
+                        required
+                        className="form-field"
+                        type="text"
+                        placeholder="FirstName"
+                        value={firstName}
+                        readOnly={lockInputs}
+                        onChange={(e) => setFirstName(e.target.value)}
                       />
-                    </div>
-                    <FileBase64 multiple={false} onDone={handleFile} />
-                    <Form.Control.Feedback type="invalid">
-                      please Upload Your Profile Picture
-                    </Form.Control.Feedback>
-                  </Form.Group>
-                </Row>
-                <div className="mt-5 text-center">
-                  {editBtn ? (
-                    <Button
-                      className="me-3"
-                      style={{ backgroundColor: "#2A3166" }}
-                      onClick={handleEdit}
-                    >
-                      Edit
-                    </Button>
-                  ) : (
-                    <Button
-                      style={{ backgroundColor: "#0B4141" }}
-                      onClick={handleSave}
-                      className="me-3"
-                    >
-                      Save
-                    </Button>
-                  )}
+                      <Form.Control.Feedback type="invalid">
+                        Please Enter First Name
+                      </Form.Control.Feedback>
+                    </Form.Group>
+                  </Row>
+                  <Row>
+                    <Form.Group as={Col} md="12" controlId="validationCustom02">
+                      <Form.Label>Second Name</Form.Label>
+                      <Form.Control
+                        required
+                        type="text"
+                        className="form-field"
+                        placeholder="SecondName"
+                        value={lastName}
+                        readOnly={lockInputs}
+                        onChange={(e) => setLastName(e.target.value)}
+                      />
+                      <Form.Control.Feedback type="invalid">
+                        Please Enter Second Name
+                      </Form.Control.Feedback>
+                    </Form.Group>
+                  </Row>
+                  <Row>
+                    {" "}
+                    <Form.Group as={Col} md="12" controlId="validationCustom03">
+                      <Form.Label>Email</Form.Label>
+                      <Form.Control
+                        required
+                        type="email"
+                        className="form-field"
+                        placeholder="Email"
+                        value={email}
+                        readOnly={lockInputs}
+                        onChange={(e) => setEmail(e.target.value)}
+                      />
+                      <Form.Control.Feedback type="invalid">
+                        Please Enter Your Email
+                      </Form.Control.Feedback>
+                    </Form.Group>
+                  </Row>
+                  <Row>
+                    <Form.Group as={Col} md="12" controlId="validationCustom04">
+                      <Form.Label>Password</Form.Label>
+                      <Form.Control
+                        required
+                        type="password"
+                        className="form-field"
+                        placeholder="password"
+                        value={password}
+                        readOnly={lockInputs}
+                        onChange={(e) => setPassword(e.target.value)}
+                      />
+                      <Form.Control.Feedback type="invalid">
+                        Please Enter Password
+                      </Form.Control.Feedback>
+                    </Form.Group>
+                  </Row>
+                  <Row>
+                    <Form.Group as={Col} md="12" controlId="validationCustom05">
+                      <Form.Label>Mobile-Number</Form.Label>
+                      <Form.Control
+                        required
+                        type="number" // Make sure it's set to "number"
+                        className="form-field"
+                        placeholder="Mobile-Number"
+                        value={mobileNumber}
+                        readOnly={lockInputs}
+                        onChange={(e) => setMobileNumber(e.target.value)}
+                      />
+                      <Form.Control.Feedback type="invalid">
+                        Please Enter Mobile-Number
+                      </Form.Control.Feedback>
+                    </Form.Group>
+                  </Row>
+                  <Row>
+                    {" "}
+                    <Form.Group as={Col} md="12" controlId="validationCustom06">
+                      <Form.Label className="pt-3">
+                        Upload Your Profile Picture
+                      </Form.Label>
+                      <div className="d-flex m-2">
+                        <p>Current Profile</p>
+                        <img
+                          src={userDetail?.profilePicture}
+                          width={"40px"}
+                          height={"35px"}
+                        />
+                      </div>
+                      <FileBase64 multiple={false} onDone={handleFile} />
+                      <Form.Control.Feedback type="invalid">
+                        please Upload Your Profile Picture
+                      </Form.Control.Feedback>
+                    </Form.Group>
+                  </Row>
+                  <div className="mt-5 text-center">
+                    {editBtn ? (
+                      <Button
+                        className="me-3"
+                        style={{ backgroundColor: "#2A3166" }}
+                        onClick={handleEdit}
+                      >
+                        Edit
+                      </Button>
+                    ) : (
+                      <Button
+                        style={{ backgroundColor: "#0B4141" }}
+                        onClick={handleSave}
+                        className="me-3"
+                      >
+                        Save
+                      </Button>
+                    )}
 
-                  <Button variant="danger" onClick={handleDelete}>
-                    Delete
-                  </Button>
-                </div>
-              </Form>
-            </div>
-          </Offcanvas.Body>
-        </Offcanvas>
-        <button
-          style={{
-            backgroundColor: "red",
-            borderRadius: "12px",
-            color: "white",
-          }}
-        >
+                    <Button variant="danger" onClick={handleDelete}>
+                      Delete
+                    </Button>
+                  </div>
+                </Form>
+              </div>
+            </Offcanvas.Body>
+          </Offcanvas>
+        </div>
+      ) : (
+        ""
+      )}
+      {userId == "" ? (
+        <div className="d-flex gap-2">
           {admin ? (
-            <p className="m-0" onClick={handleAdmin}>
+            <button
+              style={{
+                backgroundColor: "red",
+                borderRadius: "12px",
+                color: "white",
+              }}
+              onClick={handleAdmin}
+            >
               Admin
-            </p>
+            </button>
           ) : (
-            <p className="m-0" onClick={handleEditBtn}>
-              Admin logOut
-            </p>
+            <>
+              <img
+                src={profilePic}
+                // alt="profile"
+                width={"35px"}
+                height={"30px"}
+                style={{ borderRadius: "12px", cursor: "pointer" }}
+                onClick={handleShow}
+              />
+
+              <button
+                style={{
+                  backgroundColor: "red",
+                  borderRadius: "12px",
+                  color: "white",
+                }}
+                onClick={handleEditBtn}
+              >
+                Admin logOut
+              </button>
+            </>
           )}
-        </button>
-      </div>
+        </div>
+      ) : (
+        ""
+      )}
     </div>
   );
 };
