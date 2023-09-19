@@ -31,7 +31,7 @@ const Admin = () => {
   const getAllRecipeFunc = async () => {
     try {
       const response = await axios.get(
-        "http://localhost:5000/api/v1/recipe/allRecipe"
+        "https://sore-cyan-hedgehog-slip.cyclic.cloud/api/v1/recipe/allRecipe"
       );
       setAllRecipes(response.data.data);
       console.log(allRecipes);
@@ -48,7 +48,7 @@ const Admin = () => {
     } else {
       try {
         const response = await axios.post(
-          "http://localhost:5000/api/v1/recipe/create",
+          "https://sore-cyan-hedgehog-slip.cyclic.cloud/api/v1/recipe/create",
           {
             mealName,
             instruction,
@@ -74,7 +74,7 @@ const Admin = () => {
   const handleDelete = async (id) => {
     try {
       axios
-        .delete(`http://localhost:5000/api/v1/recipe/${id}`)
+        .delete(`https://sore-cyan-hedgehog-slip.cyclic.cloud/api/v1/recipe/${id}`)
         .then((response) => {
           window.confirm("Are you sure to delete the recipe from the database");
           window.alert("Successfully deleted");
