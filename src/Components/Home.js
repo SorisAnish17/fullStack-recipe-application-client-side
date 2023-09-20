@@ -88,7 +88,7 @@ const Home = () => {
               </p>
             </div>
             <div className="footer-col-3">
-              <h3>Useful Links</h3>
+              <h3 className="ms-4">Useful Links</h3>
               <ul>
                 <li>Coupons</li>
                 <li>Blog Plus</li>
@@ -97,7 +97,7 @@ const Home = () => {
               </ul>
             </div>
             <div className="footer-col-4">
-              <h3>Follow Us</h3>
+              <h3  className="ms-4">Follow Us</h3>
               <ul>
                 <li>Facebook</li>
                 <li>Twitter</li>
