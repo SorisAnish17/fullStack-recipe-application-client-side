@@ -376,7 +376,7 @@ section {
   #cookies {
     height: 70vh; /* Adjust the height as needed for smaller screens */
     background-image: none; /* Remove the background image */
-    z-index: 1;
+    /* z-index: 1; */
   }
 
   /* Adjust the image size */
@@ -496,5 +496,27 @@ ul {
   }
   #home {
     margin-left: 12px !important;
+  }
+  .right-slide > div {
+    min-width: 200px;
+    position: relative !important;
+    left: 35px !important;
+    background-size: 100% 100%; /* Set background size to cover the entire container */
+  }
+
+  .left-slide > div {
+    min-width: 175px;
+  }
+  .action-buttons {
+    position: absolute;
+    left: 43%;
+    top: 50%;
+  }
+  #singleProduct p {
+    word-spacing: 10px;
+    text-align: start;
+  }
+  #indregients {
+    text-align: start !important;
   }
 }
