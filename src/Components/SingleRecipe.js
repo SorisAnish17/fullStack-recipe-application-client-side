@@ -85,7 +85,7 @@ const SingleRecipe = () => {
                 <h4>Instructions</h4>
                 <p>{recipe.instruction}</p>
                 <h4>Ingredient:</h4>
-                <div className="d-flex gap-3 flex-wrap py-3">
+                <div className="d-flex gap-3 flex-wrap py-3" id="indregients">
                   {recipe.ingredients}
                   {console.log(recipe.ingredients)}
                 </div>
