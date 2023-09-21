@@ -9,7 +9,7 @@ import Row from "react-bootstrap/Row";
 import FileBase64 from "react-file-base64";
 import gif from "../images/gif.gif";
 import { useUserContext } from "../Context/UserInfo";
-
+import toast from "react-hot-toast";
 const EditRecipe = () => {
   let { id } = useParams();
   const [validated, setValidated] = useState(false);
@@ -60,7 +60,7 @@ const EditRecipe = () => {
         );
         // console.log(response);
         window.confirm("Are You Want To update your data?");
-        alert("Successfully Updated");
+        toast.success("Successfully Updated");
         window.location.reload();
       } catch (error) {
         console.error(error);
