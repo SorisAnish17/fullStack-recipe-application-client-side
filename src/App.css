@@ -482,6 +482,7 @@ ul {
   }
  .alert{
    width:350px !important;
+   text-align:center !important;
  }
 }
 
