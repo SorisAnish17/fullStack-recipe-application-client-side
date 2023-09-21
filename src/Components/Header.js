@@ -1,7 +1,7 @@
 import { FaGlassMartiniAlt } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
 import { useUserContext } from "../Context/UserInfo";
-import { useState, useEffect } from "react"; // Import useEffect
+import { useState, useEffect } from "react";
 import Offcanvas from "react-bootstrap/Offcanvas";
 import Button from "react-bootstrap/Button";
 import Col from "react-bootstrap/Col";
@@ -9,7 +9,7 @@ import Form from "react-bootstrap/Form";
 import Row from "react-bootstrap/Row";
 import FileBase64 from "react-file-base64";
 import axios from "axios";
-
+import toast from "react-hot-toast";
 const Header = ({ name, ...props }) => {
   const navigate = useNavigate();
   const [show, setShow] = useState(false);
@@ -59,7 +59,7 @@ const Header = ({ name, ...props }) => {
         const isSuccess = await passwordAuth(); // Check password and email first
         if (isSuccess && window.confirm("Are You Sure To Edit Your Details?")) {
           await updatePost();
-          window.alert("Successfully updated");
+          toast.success("Successfully updated");
           window.location.reload();
         }
       } catch (error) {
@@ -75,6 +75,7 @@ const Header = ({ name, ...props }) => {
     setProfilePic("");
     setAdmin(true);
     setUserDetail([]);
+    toast.success("Successfully LogOut");
   };
 
   const handleAdmin = () => {
@@ -112,15 +113,15 @@ const Header = ({ name, ...props }) => {
 
   const passwordAuth = () => {
     if (password.length < 8) {
-      alert("Make your Password Strength(Enter 8 Character)");
+      toast.error("Make your Password Strength(Enter 8 Character)");
       return false;
     } else if (mobileNumber.toString().length !== 10) {
-      alert("Enter valid Mobile Number");
+      toast.error("Enter valid Mobile Number");
       return false;
     } else if (validateGmail(email)) {
       return true;
     } else {
-      alert("Invalid Email");
+      toast.error("Invalid Email");
       return false;
     }
   };
@@ -150,7 +151,7 @@ const Header = ({ name, ...props }) => {
             `https://sore-cyan-hedgehog-slip.cyclic.cloud/api/v1/user/${userDetail._id}`
           )
           .then((reponse) => {
-            alert("User Deleted Successfully");
+            toast.success("User Deleted Successfully");
             window.location.reload();
           })
           .catch((error) => console.log(error));
@@ -165,6 +166,7 @@ const Header = ({ name, ...props }) => {
       return !prevAdmin;
     });
     setProfilePic("");
+    toast.success("Successfully LogOut");
     navigate("/");
   };
 
