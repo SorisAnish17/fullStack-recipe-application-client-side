@@ -480,6 +480,9 @@ ul {
   .app-logo img {
     width: 100px;
   }
+ .alert{
+   width:350px !important;
+ }
 }
 
 @media screen and (max-width: 1200px) {
