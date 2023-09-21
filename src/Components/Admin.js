@@ -9,7 +9,10 @@ import { useUserContext } from "../Context/UserInfo";
 import axios from "axios";
 import Table from "react-bootstrap/Table";
 import gif from "../images/gif.gif";
-
+import toast from "react-hot-toast";
+import google from "../images/play-store.png";
+import { FaGlassMartiniAlt } from "react-icons/fa";
+import app from "../images/app-store.png";
 const Admin = () => {
   const [validated, setValidated] = useState(false);
   const [mealName, setMealName] = useState("");
@@ -58,7 +61,7 @@ const Admin = () => {
           }
         );
         // console.log(response);
-        alert("Successfully added");
+        toast.success("Successfully added");
         window.location.reload();
       } catch (error) {
         console.error(error);
@@ -79,7 +82,7 @@ const Admin = () => {
         )
         .then((response) => {
           window.confirm("Are you sure to delete the recipe from the database");
-          window.alert("Successfully deleted");
+          toast.success("Successfully deleted");
           window.location.reload();
         });
     } catch (error) {
