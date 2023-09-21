@@ -7,7 +7,7 @@ import Col from "react-bootstrap/Col";
 import Form from "react-bootstrap/Form";
 import Row from "react-bootstrap/Row";
 import Alert from "react-bootstrap/Alert";
-
+import toast from "react-hot-toast";
 const LoginPage = () => {
   const { setAdmin, setProfilePic } = useUserContext();
   const navigate = useNavigate();
@@ -45,13 +45,17 @@ const LoginPage = () => {
     try {
       if (email === "admin@gmail.com" && password === "9787507656") {
         setfinalVerify("User Found");
+        toast.success("Successfully Login");
         navigate(`/apiserver`);
       } else if (email === "admin@gmail.com") {
         setfinalVerify("Invalid Password");
+        toast.error("Invalid Password");
       } else if (password === "9787507656") {
         setfinalVerify("Invalid Email");
+        toast.error("Invalid Email");
       } else {
-        setfinalVerify(`Log-in Failed`);
+        setfinalVerify("Log-in Failed");
+        toast.error(`Log-in Failed`);
       }
     } catch (error) {
       console.log(error);
@@ -59,7 +63,7 @@ const LoginPage = () => {
     }
   };
 
-  console.log(password);
+  // console.log(password);
   return (
     <>
       <div className="bgTwo">
@@ -144,7 +148,7 @@ const LoginPage = () => {
           >
             {findUser && (
               <Alert
-                variant={finalVerify === "User Found" ? "success" : "danger"} className="alert"
+                variant={finalVerify === "User Found" ? "success" : "danger"}
               >
                 {finalVerify}
               </Alert>
