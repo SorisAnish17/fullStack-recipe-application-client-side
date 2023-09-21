@@ -144,7 +144,7 @@ const LoginPage = () => {
           >
             {findUser && (
               <Alert
-                variant={finalVerify === "User Found" ? "success" : "danger"}
+                variant={finalVerify === "User Found" ? "success" : "danger"} className="alert"
               >
                 {finalVerify}
               </Alert>
