@@ -8,7 +8,7 @@ import Form from "react-bootstrap/Form";
 import Row from "react-bootstrap/Row";
 import Alert from "react-bootstrap/Alert";
 import axios from "axios";
-
+import toast from "react-hot-toast";
 const LoginPage = () => {
   const { userId, setUserId } = useUserContext();
   useEffect(() => {
@@ -50,12 +50,15 @@ const LoginPage = () => {
         if (findUser.password === password) {
           setfinalVerify("User Found");
           setUserId(findUser._id);
+          toast.success("Successfully Sign-In");
           navigate(`/home/${findUser._id}`);
         } else {
           setfinalVerify("Invalid Password");
+          toast.error("Invalid Password");
         }
       } else {
         setfinalVerify("User Not Found");
+        toast.error("User Not Found");
       }
     } catch (error) {
       console.log(error);
@@ -152,7 +155,8 @@ const LoginPage = () => {
           >
             {findUser && (
               <Alert
-                variant={finalVerify === "User Found" ? "success" : "danger"} className="alert"
+                variant={finalVerify === "User Found" ? "success" : "danger"}
+                className="alert"
               >
                 {finalVerify}
               </Alert>
