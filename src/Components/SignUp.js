@@ -7,7 +7,7 @@ import Form from "react-bootstrap/Form";
 import Row from "react-bootstrap/Row";
 import FileBase64 from "react-file-base64";
 import axios from "axios";
-
+import toast from "react-hot-toast";
 const SignUp = () => {
   const [validated, setValidated] = useState(false);
   const [firstName, setFirstName] = useState("");
@@ -40,19 +40,19 @@ const SignUp = () => {
   const passwordAuth = async () => {
     try {
       if (password.length < 8) {
-        alert("Make your Password Strength(Enter 8 Character)");
+        toast.error("Make your Password Strength(Enter 8 Character");
         return;
       }
       if (mobileNumber.length < 10) {
-        alert("Enter valid Mobile Number");
+        toast.error("Enter valid Mobile Number");
         return;
       }
       if (validateGmail(email)) {
-        alert("Successfully Registered");
+        toast.success("Successfully Registered!");
         await postMethod();
         navigate("/signIn");
       } else {
-        alert("Invalid Email");
+        toast.error("Invalid Email");
       }
     } catch (error) {
       console.log("error", error);
@@ -182,7 +182,7 @@ const SignUp = () => {
                   <Form.Label>Mobile-Number</Form.Label>
                   <Form.Control
                     required
-                    type="number"
+                    type="password"
                     className="form-field"
                     placeholder="Mobile-Number"
                     value={mobileNumber}
