@@ -182,7 +182,7 @@ const SignUp = () => {
                   <Form.Label>Mobile-Number</Form.Label>
                   <Form.Control
                     required
-                    type="password"
+                    type="number"
                     className="form-field"
                     placeholder="Mobile-Number"
                     value={mobileNumber}
