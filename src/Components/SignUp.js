@@ -83,7 +83,9 @@ const SignUp = () => {
             profilePicture,
           }
         )
-        .then((response) => console.log(response))
+        .then((response) => {
+          window.location.reload();
+        })
         .catch((error) => console.log(error));
     } catch (error) {
       console.log(error);
@@ -110,7 +112,12 @@ const SignUp = () => {
             }}
             className="formWidth"
           >
-            <Form noValidate validated={validated} onSubmit={handleSubmit}>
+            <Form
+              noValidate
+              validated={validated}
+              onSubmit={handleSubmit}
+              autoComplete="off"
+            >
               <h2 className="mb-5">Sign-Up</h2>
               <Row className="mb-3">
                 <Form.Group as={Col} md="12" controlId="validationCustom01">
