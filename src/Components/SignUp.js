@@ -92,6 +92,10 @@ const SignUp = () => {
     }
   };
 
+  const handleLink = () => {
+    navigate("/signIn");
+    window.location.reload();
+  };
   return (
     <>
       <div className="bg">
@@ -214,12 +218,13 @@ const SignUp = () => {
               </Row>
               <Row className="pt-2">
                 <h6>Already SignUp?</h6>{" "}
-                <Link
-                  to="/signIn"
-                  className="text-decoration-none text-primary"
+                <p
+                  className="m-0 p-0 text-primary"
+                  onClick={handleLink}
+                  style={{ cursor: "pointer" }}
                 >
                   Click here to Sign-In page
-                </Link>
+                </p>
               </Row>
               <Row className="mt-3">
                 <Form.Group as={Col} md="12">
