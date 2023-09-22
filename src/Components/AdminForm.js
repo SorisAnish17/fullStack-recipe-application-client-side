@@ -84,7 +84,7 @@ const LoginPage = () => {
             }}
             className="formWidth"
           >
-            <Form noValidate validated={validated} onSubmit={handleSubmit}>
+            <Form noValidate validated={validated} onSubmit={handleSubmit} autoComplete="off">
               <h4 className="mb-5 text-light">Admin panel login</h4>
               <Row>
                 {" "}
