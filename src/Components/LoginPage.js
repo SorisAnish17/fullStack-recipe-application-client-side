@@ -86,7 +86,7 @@ const LoginPage = () => {
             }}
             className="formWidth"
           >
-            <Form noValidate validated={validated} onSubmit={handleSubmit}>
+            <Form noValidate validated={validated} onSubmit={handleSubmit} autoComplete="off">
               <h2 className="mb-5 text-light">Sign-In</h2>
               <Row>
                 {" "}
