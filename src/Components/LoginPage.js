@@ -9,22 +9,27 @@ import Row from "react-bootstrap/Row";
 import Alert from "react-bootstrap/Alert";
 import axios from "axios";
 import toast from "react-hot-toast";
+
 const LoginPage = () => {
   const { userId, setUserId } = useUserContext();
-  useEffect(() => {
-    axios
-      .get("https://sore-cyan-hedgehog-slip.cyclic.cloud/api/v1/user/allUser")
-      .then((response) => setUsers(response.data.data))
-      .catch((error) => console.log(error));
-  }, []);
-
   const navigate = useNavigate();
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  // const [email, setEmail] = useState("");
+  // const [password, setPassword] = useState("");
+  const [email, setEmail] = useState("test@gmail.com");
+  const [password, setPassword] = useState("12345678a");
   const [users, setUsers] = useState([]);
   const [validated, setValidated] = useState(false);
   const [findUser, setFindUser] = useState(false);
   const [finalVerify, setfinalVerify] = useState("");
+
+  useEffect(() => {
+    axios
+      .get("https://sore-cyan-hedgehog-slip.cyclic.cloud/api/v1/user/allUser")
+      .then((response) => {
+        setUsers(response.data.data);
+      })
+      .catch((error) => console.log(error));
+  }, []);
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -43,26 +48,21 @@ const LoginPage = () => {
   };
 
   const verifyUser = async () => {
-    try {
-      let findUser = users.find((user) => user.email === email);
-      if (findUser) {
-        // Perform password comparison securely (you should use bcrypt or a similar library)
-        if (findUser.password === password) {
-          setfinalVerify("User Found");
-          setUserId(findUser._id);
-          toast.success("Successfully Sign-In");
-          navigate(`/home/${findUser._id}`);
-        } else {
-          setfinalVerify("Invalid Password");
-          toast.error("Invalid Password");
-        }
+    let findUser = users.find((user) => user.email === email);
+    if (findUser) {
+      // Perform password comparison securely (you should use bcrypt or a similar library)
+      if (findUser.password === password) {
+        setfinalVerify("User Found");
+        setUserId(findUser._id);
+        toast.success("Successfully Sign-In");
+        navigate(`/home/${findUser._id}`);
       } else {
-        setfinalVerify("User Not Found");
-        toast.error("User Not Found");
+        setfinalVerify("Invalid Password");
+        toast.error("Invalid Password");
       }
-    } catch (error) {
-      console.log(error);
-      setFindUser(false);
+    } else {
+      setfinalVerify("User Not Found");
+      toast.error("User Not Found");
     }
   };
 
@@ -86,11 +86,21 @@ const LoginPage = () => {
             }}
             className="formWidth"
           >
-            <Form noValidate validated={validated} onSubmit={handleSubmit} autoComplete="off">
+            <Form
+              noValidate
+              validated={validated}
+              onSubmit={handleSubmit}
+              autoComplete="off"
+            >
               <h2 className="mb-5 text-light">Sign-In</h2>
               <Row>
                 {" "}
-                <Form.Group as={Col} md="12" controlId="validationCustom01">
+                <Form.Group
+                  as={Col}
+                  md="12"
+                  controlId="validationCustom01"
+                  autoComplete="off"
+                >
                   <Form.Label className="text-light">Email</Form.Label>
                   <Form.Control
                     required
