@@ -29,6 +29,9 @@ const Admin = () => {
       "https://png.pngtree.com/png-clipart/20190629/original/pngtree-vector-administration-icon-png-image_4090499.jpg"
     );
     setAdmin(false);
+    toast("For security purposes, we have disabled the delete option.", {
+      duration: 6000,
+    });
   }, []);
 
   const getAllRecipeFunc = async () => {
@@ -258,6 +261,7 @@ const Admin = () => {
                               onClick={() => {
                                 handleDelete(recipes._id);
                               }}
+                              disabled
                             >
                               delete
                             </Button>
