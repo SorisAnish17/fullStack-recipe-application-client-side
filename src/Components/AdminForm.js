@@ -11,8 +11,8 @@ import toast from "react-hot-toast";
 const LoginPage = () => {
   const { setAdmin, setProfilePic } = useUserContext();
   const navigate = useNavigate();
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const [email, setEmail] = useState("admin@gmail.com");
+  const [password, setPassword] = useState("9787507656");
   const [users, setUsers] = useState([]);
   const [validated, setValidated] = useState(false);
   const [findUser, setFindUser] = useState(false);
@@ -84,7 +84,12 @@ const LoginPage = () => {
             }}
             className="formWidth"
           >
-            <Form noValidate validated={validated} onSubmit={handleSubmit} autoComplete="off">
+            <Form
+              noValidate
+              validated={validated}
+              onSubmit={handleSubmit}
+              autoComplete="off"
+            >
               <h4 className="mb-5 text-light">Admin panel login</h4>
               <Row>
                 {" "}
