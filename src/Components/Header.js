@@ -70,12 +70,13 @@ const Header = ({ name, ...props }) => {
   };
 
   const handleLogOut = () => {
-    navigate("/signIn");
+    navigate("/");
     setUserId("");
     setProfilePic("");
     setAdmin(true);
     setUserDetail([]);
     toast.success("Successfully LogOut");
+    window.location.reload();
   };
 
   const handleAdmin = () => {
@@ -226,7 +227,7 @@ const Header = ({ name, ...props }) => {
                   borderRadius: "15px",
                 }}
               >
-                <Form noValidate validated={validated} autoComplete="off">
+                <Form noValidate validated={validated}>
                   <Row className="mb-3">
                     <Form.Group as={Col} md="12" controlId="validationCustom01">
                       <Form.Label>First Name</Form.Label>
