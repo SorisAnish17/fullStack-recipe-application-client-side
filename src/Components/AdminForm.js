@@ -83,6 +83,7 @@ const LoginPage = () => {
               color: "white",
             }}
             className="formWidth"
+            id="formWidth"
           >
             <Form
               noValidate
