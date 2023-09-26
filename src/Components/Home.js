@@ -97,7 +97,7 @@ const Home = () => {
               </ul>
             </div>
             <div className="footer-col-4">
-              <h3  className="ms-4">Follow Us</h3>
+              <h3 className="ms-4">Follow Us</h3>
               <ul>
                 <li>Facebook</li>
                 <li>Twitter</li>
