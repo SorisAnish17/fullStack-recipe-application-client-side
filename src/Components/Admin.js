@@ -197,15 +197,6 @@ const Admin = () => {
                       </Form.Control.Feedback>
                     </Form.Group>
                   </Row>
-                  <Row className="pt-2">
-                    <h6>Already SignUp?</h6>{" "}
-                    <Link
-                      to="/signIn"
-                      className="text-decoration-none text-primary"
-                    >
-                      Click here to Sign-In page
-                    </Link>
-                  </Row>
                   <Row className="mt-3">
                     <Form.Group as={Col} md="12">
                       <Button type="submit" variant="success">
