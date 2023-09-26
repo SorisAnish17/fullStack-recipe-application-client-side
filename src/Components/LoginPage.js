@@ -9,7 +9,6 @@ import Row from "react-bootstrap/Row";
 import Alert from "react-bootstrap/Alert";
 import axios from "axios";
 import toast from "react-hot-toast";
-
 const LoginPage = () => {
   const { userId, setUserId } = useUserContext();
   const navigate = useNavigate();
@@ -79,12 +78,13 @@ const LoginPage = () => {
           <div
             style={{
               width: "500px",
-              backgroundColor: "#E60576",
+              backgroundColor: "black",
               padding: "15px",
               borderRadius: "15px",
               color: "white",
             }}
             className="formWidth"
+            id="formWidth"
           >
             <Form
               noValidate
@@ -138,7 +138,10 @@ const LoginPage = () => {
                 </Form.Group>
               </Row>
               <Row className="pt-2">
-                <Link to="/" className="text-decoration-none text-light">
+                <Link
+                  to="/Register"
+                  className="text-decoration-none text-light"
+                >
                   Click here to Sign-Up page
                 </Link>
               </Row>
