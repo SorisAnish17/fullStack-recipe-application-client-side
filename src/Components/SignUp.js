@@ -50,7 +50,7 @@ const SignUp = () => {
       if (validateGmail(email)) {
         toast.success("Successfully Registered!");
         await postMethod();
-        navigate("/signIn");
+        navigate("/");
       } else {
         toast.error("Invalid Email");
       }
@@ -93,7 +93,7 @@ const SignUp = () => {
   };
 
   const handleLink = () => {
-    navigate("/signIn");
+    navigate("/");
     window.location.reload();
   };
   return (
@@ -109,12 +109,13 @@ const SignUp = () => {
           <div
             style={{
               width: "500px",
-              backgroundColor: "#A7BC5B",
+              backgroundColor: "black",
               padding: "15px",
               borderRadius: "15px",
-              color: "black",
+              color: "white",
             }}
             className="formWidth"
+            id="formWidth"
           >
             <Form
               noValidate
@@ -124,7 +125,12 @@ const SignUp = () => {
             >
               <h2 className="mb-5">Sign-Up</h2>
               <Row className="mb-3">
-                <Form.Group as={Col} md="12" controlId="validationCustom01">
+                <Form.Group
+                  as={Col}
+                  md="12"
+                  controlId="validationCustom01"
+                  autoComplete="off"
+                >
                   <Form.Label>First Name</Form.Label>
                   <Form.Control
                     required
